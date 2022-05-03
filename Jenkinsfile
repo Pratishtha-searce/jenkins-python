@@ -16,10 +16,8 @@ pipeline {
             }
         }
         stage('Trigger ManifestUpdate') {
-            steps{
-                sh 'echo "triggering updatemanifestjob"'
-                sh 'build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]'
-            }
+                echo "triggering updatemanifestjob"
+                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: env.BUILD_NUMBER)]
         }
     }
 }
