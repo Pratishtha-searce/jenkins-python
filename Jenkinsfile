@@ -17,8 +17,8 @@ pipeline {
         }
         stage('Trigger ManifestUpdate') {
             steps{
-                sh 'echo "triggering updatemanifestjob"'
-                sh 'build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: ${GIT_COMMIT})]'
+                echo "triggering updatemanifestjob"
+                build job: 'updatemanifest', parameters: [string(name: 'DOCKERTAG', value: GIT_COMMIT)]
             }
         }
 
